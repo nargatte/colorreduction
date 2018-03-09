@@ -1,0 +1,47 @@
+﻿<Window x:Class="GK3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GK3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="754" Width="1662" MinHeight="500" MinWidth="1300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Canvas Grid.Column="0" Width="200">
+            <Button Click="ButtonBase_OnClick" Content="Load Image" Height="80" Canvas.Left="10" Canvas.Top="10" Width="180"/>
+            <Label Content="K - red" Canvas.Left="10" Canvas.Top="118" Height="25" Width="72"/>
+            <TextBox LostFocus="OnLostFocus" Name="KRedText" Height="25" Canvas.Left="114" TextWrapping="Wrap" Text="5" Canvas.Top="118" Width="64"/>
+            <Label Content="K - green" Canvas.Left="10" Canvas.Top="148" Height="30" Width="72"/>
+            <TextBox LostFocus="OnLostFocus" Name="KGreenText" Height="25" Canvas.Left="114" TextWrapping="Wrap" Text="5" Canvas.Top="148" Width="64"/>
+            <Label Content="K - blue" Canvas.Left="10" Canvas.Top="178" Height="25" Width="72"/>
+            <TextBox LostFocus="OnLostFocus" Name="KBlueText" Height="25" Canvas.Left="114" TextWrapping="Wrap" Text="5" Canvas.Top="178" Width="64"/>
+            <Label Content="K" Canvas.Left="10" Canvas.Top="208" Height="25" Width="72"/>
+            <TextBox LostFocus="OnLostFocus" Name="KText" Height="25" Canvas.Left="114" TextWrapping="Wrap" Text="32/32" Canvas.Top="208" Width="64"/>
+            <RadioButton Checked="RadionButton_OnChecked" Name="AverageDitheringRadionButton" IsChecked="True" GroupName="Algorithm" Content="Average Dithering" Canvas.Left="10" Canvas.Top="258" Width="168"/>
+            <RadioButton Checked="RadionButton_OnChecked" Name="OrderedDithering1RadionButton" GroupName="Algorithm" Content="Ordered Dithering ver 1" Canvas.Left="10" Canvas.Top="278" Width="168"/>
+            <RadioButton Checked="RadionButton_OnChecked" Name="OrderedDithering2RadionButton" GroupName="Algorithm" Content="Ordered Dithering ver 2" Canvas.Left="10" Canvas.Top="298" Width="168"/>
+            <RadioButton Checked="RadionButton_OnChecked" Name="ErrorDiffusionDitheringRadionButton" GroupName="Algorithm" Content="Error Diffusion Dithering " Canvas.Left="10" Canvas.Top="318" Width="168"/>
+            <RadioButton Checked="RadionButton_OnChecked"  Name="PopularityAlgorithmRadionButton" GroupName="Algorithm" Content="Popularity Algorithm" Canvas.Left="10" Canvas.Top="338" Width="168"/>
+            <ItemsControl Name="ImageButtonsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image MouseDown="UIElement_OnMouseDown" Height="80" Width="80" Margin="5" Source="{Binding BitmapImage}"></Image>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Left" Orientation="Horizontal" Height="347" Margin="10,368,0,0" VerticalAlignment="Top" Width="180">
+                        </WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </Canvas>
+        <Image Name="ImageIn" Grid.Column="1"></Image>
+        <Image Name="ImageOut" Grid.Column="2"></Image>
+    </Grid>
+</Window>
